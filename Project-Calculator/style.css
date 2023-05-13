@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.page-body {
+  height: 100vh;
+  background-color: rgb(87, 161, 151);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.calc-body {
+  background-color: #ffffff;
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+  background-image: linear-gradient(
+    95deg,
+    rgb(224, 224, 227),
+    rgb(201, 205, 210)
+  );
+  height: auto;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  /* padding: 25px 15px 20px 15px; */
+}
+
+.calc-numbers-holder {
+  margin-top: 15px;
+  /* background-color: #dadada; */
+  height: auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.bttn,
+.operator {
+  text-align: center;
+  background-color: #e0dee5;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  padding: 0 !important;
+  transition: 0.2s;
+  color: #40716f;
+  cursor: pointer;
+  font-weight: 500;
+}
+.bttn:hover {
+  background-color: #f1f1f1;
+}
+.operator {
+  background-color: #b1d2d2;
+}
+.btn-del,
+.btn-back {
+  background-color: #c8ccd1;
+  color: black;
+}
+
+.equals {
+  background-image: linear-gradient(60deg, #458580, #64b4a3);
+  color: white;
+  transition: 0.2s;
+}
+.equals:active {
+  background-image: linear-gradient(75deg, #458580, #64b4a3);
+}
+.empty {
+  display: none;
+}
+@media only screen and (max-width: 575px) {
+  .calc-numbers-holder .container-fluid .row {
+    flex-wrap: nowrap;
+  }
+}
