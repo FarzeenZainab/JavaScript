@@ -74,3 +74,27 @@ const cookieBtn = document.querySelector('.btn--close-cookie')
 cookieBtn.addEventListener('click', () => {
   msg.remove()
 })
+
+// getComputedStyles() gives us the styles of an element inside the dom
+console.log(getComputedStyle(msg).height) 
+msg.style.height = Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px'
+
+console.log(getComputedStyle(msg).height + 40 + 'px')
+console.log(Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px')
+
+// CSS custom properties / CSS variables
+// when changing custom properties in CSS we have to use setProperty() method on the document element
+document.documentElement.style.setProperty('--color-primary', 'orangered')
+
+// Setting html attributes in JS
+const logo = document.querySelector('.nav__logo')
+console.log(logo.alt)
+console.log(logo.src)
+console.log(logo.className)
+
+// non standard attribute
+console.log(logo.designer)
+
+// there is another way of reading non standard attributes from the dom
+// getAttribute()
+console.log(logo.getAttribute('designer'))
