@@ -89,7 +89,6 @@ document.documentElement.style.setProperty('--color-primary', 'orangered')
 // Setting html attributes in JS
 const logo = document.querySelector('.nav__logo')
 console.log(logo.alt)
-console.log(logo.src)
 console.log(logo.className)
 
 // non standard attribute
@@ -98,3 +97,88 @@ console.log(logo.designer)
 // there is another way of reading non standard attributes from the dom
 // getAttribute()
 console.log(logo.getAttribute('designer'))
+
+// we can set attribute as well using setAttribute method
+logo.setAttribute('company', 'Bankist')
+
+// src attribute returns the absolute path as the value, to get the relative path we have to use getAttribute method
+console.log(logo.src)
+console.log(logo.getAttribute('src'))
+
+// same is for links
+console.log(document.querySelector('.twitter-link').href)
+console.log(document.querySelector('.twitter-link').getAttribute('href'))
+
+// nav link
+const modalBtn = document.querySelector('.btn--show-modal')
+console.log(modalBtn.href) // returns absolute path
+console.log(modalBtn.getAttribute('href')) // returns relative path
+
+// data attributes
+// these are special attributes that starts with the word data
+console.log(logo.dataset.versionNumber) // we use camel case where we have dash in the data attribute's name
+
+// Classes
+// methods we have for classes in JS
+logo.classList.add('c', 'j')
+logo.classList.remove('c', 'j')
+logo.classList.toggle('c', 'j')
+logo.classList.contains('c', 'j')
+
+// donot use
+logo.className = 'class' // it will override all the existing classes and only put one class on the element
+
+// --- Summary ---
+
+// Select element
+/**
+ * getElementById()
+ * getElementByClassName() 
+ * getElementsByTagName() -> returns an HTMLCollection that will update if the dom changes
+ * querySelector()
+ * querySelectorAll() -> returns a nodelist
+ */
+
+// Select parts of HTML page
+/**
+ * document.documentElement
+ * document.head
+ * document.body
+ */
+
+// Create a new DOM element
+/**
+ * document.createElement('div') -> creates new element
+ * element.prepand(newElement) -> prepands new element as the first child to the specified element
+ * element.append(newElement) -> appends new element as the last child to the specified element
+ * element.append(newElement.clone(true)) -> create a clone so we can append and prepand at the same time 
+ * 
+ * .textContent -> sets the text content of the element
+ * .innerHTML -> adds html and text inside the element
+ * 
+ * .remove() -> removes element from the DOM
+ */
+
+// working with element styles
+/**
+ * .style.css -> set css styles to the element
+ * console.log(ele.style.height) -> gives us the height
+ * to manuipulate exisiting css styles ex. add more to height we use .getComputedStyles() method
+ * setProperty() sets new or updates the value of a custom CSS property inside JS
+ */
+
+// working with attributes
+/**
+ * ele.href -> gives href (absolute link)
+ * ele.src -> gives src (absolute link)
+ * ele.getAttribute('attName') -> gets the specified attribute
+ * ele.data.attName -> gets the data- attribute of the element
+*/
+
+// Classes' methods
+/**
+ * .add()
+ * .remove()
+ * .toggle()
+ * .containes()
+ */
