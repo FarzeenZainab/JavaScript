@@ -84,7 +84,7 @@ console.log(Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px')
 
 // CSS custom properties / CSS variables
 // when changing custom properties in CSS we have to use setProperty() method on the document element
-document.documentElement.style.setProperty('--color-primary', 'orangered')
+// document.documentElement.style.setProperty('--color-primary', 'orangered')
 
 // Setting html attributes in JS
 const logo = document.querySelector('.nav__logo')
@@ -182,3 +182,13 @@ logo.className = 'class' // it will override all the existing classes and only p
  * .toggle()
  * .containes()
  */
+
+// Implementing Smooth Scroll
+const btnScrollTO = document.querySelector('.btn--scroll-to')
+const section = document.querySelector('#section--1')
+
+btnScrollTO.addEventListener('click', function (e) {
+  const s1Cords = section.getBoundingClientRect()
+  console.log(s1Cords )
+  console.log(e.target.getBoundingClientRect())
+})
