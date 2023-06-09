@@ -184,11 +184,49 @@ logo.className = 'class' // it will override all the existing classes and only p
  */
 
 // Implementing Smooth Scroll
-const btnScrollTO = document.querySelector('.btn--scroll-to')
+const btnScrollTo = document.querySelector('.btn--scroll-to')
 const section = document.querySelector('#section--1')
 
-btnScrollTO.addEventListener('click', function (e) {
+btnScrollTo.addEventListener('click', function (e) {
+  // get the cordinates we want to scroll to 
   const s1Cords = section.getBoundingClientRect()
-  console.log(s1Cords )
-  console.log(e.target.getBoundingClientRect())
+  console.log(s1Cords);
+
+  /* getBoundingClientRect() gives us following:
+
+      It returns a DOMRect object providing the information the size of an element and its position relative to the viewport
+
+      What is DOMRect?
+      It describes the size and position of a reactangle
+
+      x position: x distance between the browser and the element
+      y positions: y distance betweent the browser and the element
+      left:
+      right:
+      width:
+      height:
+
+      boundingClientRect is relative to current viewport 
+  */
+
+      console.log(e.target.getBoundingClientRect())
+
+      // get current scroll position
+      console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset) 
+      // result (0, 584) means we have scrolled 0px along x-axis and scrolled 584px along y-axis -> which is the distance between the current position of the view port and the top of the page
+
+      // reading the height and the width of the viewport -> the screen area in which we can see the current portion of the page
+      console.log('height/width of viewport ', document.documentElement.clientHeight, document.documentElement.clientWidth);
+
+      // so why do we need these co-ordinates for scrolling?
+      // Answer: we need these coordinates to tell JS where on the page we should scroll to
+
+      // Smooth scrolling
+      window.scrollTo('0', '1200') 
+      window.scrollTo(s1Cords.left, s1Cords.top) 
+      
+      //global function available on the window object
+      // to scroll it needs the x and y value
+      // x value determines how much it should scroll vertically
+      // y value determines how much it should scroll horizontally/down the page
 })
