@@ -378,6 +378,10 @@ document.querySelector('.nav').addEventListener('click', function (e) {
  * Implementing smooth scroll on navigation using event delegation
  */
 
+// Event Delegation
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -388,6 +392,44 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-// Event Delegation
-// 1. Add event listener to common parent element
-// 2. Determine what element originated the event
+/**
+ * DOM Traversing
+ */
+
+// DOM Traversing basically means walking through the DOM. We can select elements based on other any other element
+
+// Going downwards - selecting child elements
+// the first way of doing that is the query selector
+console.log(h1Ele.querySelectorAll('.highlight')); // will go as deep as necessary in the DOM tree to find all the element having the class of highlight if they are children of h1Ele
+
+// Selecting direct children using - childNodes & children
+console.log(h1Ele.childNodes); // gives every child node (text, comment, span, div)
+console.log(h1Ele.children); // gives children only
+
+// Selecting first and last children
+console.log(h1Ele.firstElementChild);
+console.log(h1Ele.lastElementChild);
+
+// Going upwards - selecting parents
+
+// direct parent
+console.log(h1Ele.parentNode);
+console.log(h1Ele.parentElement);
+
+// Sometimes we have to find a parent element not direct parent of the elemenet regardless how for it is in the DOM tree
+// .closest
+console.log(h1Ele.closest('.header'));
+
+// closest method is similar to querySelector but in opposite ways. querySelector finds children now matter how deep in the DOM tree but closest find parent element no matter how deep in the DOM tree
+
+// Going sideways - selecting siblings
+// we can only access direct siblings
+console.log(h1Ele.previousElementSibling);
+console.log(h1Ele.nextElementSibling);
+
+console.log(h1Ele.parentElement.children);
+[...h1Ele.parentElement.children].forEach(el => {
+  if (el !== h1Ele) {
+    el.style.transform = 'scale(0.5)';
+  }
+});
