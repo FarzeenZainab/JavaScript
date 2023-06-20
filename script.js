@@ -433,3 +433,51 @@ console.log(h1Ele.parentElement.children);
     el.style.transform = 'scale(0.5)';
   }
 });
+
+/**
+ * Creating a tabbed components
+ */
+
+const tabBtns = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const contentContainer = document.querySelector(
+  '.operations-content-container'
+);
+
+// tabBtns.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     console.log('TAB');
+//   });
+// }); // this is not a good practice, if we have more than 100 btns then we are creating 100 copies of same function on the page. The best practice is to use event delegation+
+
+/**
+ * HTML Structure
+ * - operations__tab-container (Parent class)
+ * - button.operations__tab | button.btn (common) - button.operations__tab--2 (unique) - button attribute data-tab
+ * - div.operations__content (common) - div.operations__content--2 (unique)
+ * - active button class: operations__tab--active
+ * - active div class: operations__content--active
+ */
+tabsContainer.addEventListener('click', e => {
+  if (e.target.classList.contains('operations__tab')) {
+    const id = e.target.getAttribute('data-tab');
+    const activebtn = tabsContainer.querySelector(`.operations__tab--${id}`);
+    const activeDiv = contentContainer.querySelector(
+      `.operations__content--${id}`
+    );
+
+    // remove active btn class from prev elements
+    const prevActiveBtn = tabsContainer.querySelector(
+      '.operations__tab--active'
+    );
+    const prevActiveContent = contentContainer.querySelector(
+      '.operations__content--active'
+    );
+    prevActiveBtn.classList.remove('operations__tab--active');
+    prevActiveContent.classList.remove('operations__content--active');
+
+    // add active class to current active
+    activebtn.classList.add('operations__tab--active');
+    activeDiv.classList.add('operations__content--active');
+  }
+});
