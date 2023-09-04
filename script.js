@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const navEle = document.querySelector('.nav');
 
 const openModal = function () {
   modal.classList.remove('hidden');
@@ -481,3 +482,22 @@ tabsContainer.addEventListener('click', e => {
     activeDiv.classList.add('operations__content--active');
   }
 });
+
+// How to pass arguments in event listener by implementing menu fade effect
+const handleFunction = (opacity, e) => {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    // next we have to change the opacity of siblings that are not active
+    siblings.forEach(ele => {
+      if (ele !== link) ele.style.opacity = opacity;
+      logo.style.opacity = opacity;
+    });
+  }
+};
+
+navEle.addEventListener('mouseover', handleFunction(0.5, e)); // using mouseover instead of mouseenter because mouseenter does not bubble
+
+navEle.addEventListener('mouseout', handleFunction(1, e));
