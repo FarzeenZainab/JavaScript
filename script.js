@@ -6,6 +6,7 @@
 const modal = document.querySelector('.modal');
 const nav = document.querySelector('.nav');
 const section1 = document.querySelector('#section--1');
+const headerSection = document.querySelector('.header');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
@@ -503,11 +504,32 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 // --------------- Sticky Navigation ----------------
-const initialCords = section1.getBoundingClientRect();
-window.addEventListener('scroll', function () {
-  if (this.window.scrollY > initialCords.top) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
-}); // this works but adding a class on window scroll will have a bad performance especially on mobile devices
+// const initialCords = section1.getBoundingClientRect();
+// window.addEventListener('scroll', function () {
+//   if (this.window.scrollY > initialCords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// }); // this works but adding a class on window scroll will have a bad performance especially on mobile devices
 // we have an alternative for this that is "intersection observer API"
 
 // --------------- Intersection Observer API ----------------
+// It helps us to observe changes to a way that a certain target element intersects with another element or with the viewport
+const navHeight = nav.getBoundingClientRect();
+
+const observerOptions = {
+  root: null,
+  threshold: 0,
+  // 0 means that our observer callback will run when our section is completly out of view and also as soon as it enters the view
+  // 0.2 means when the 20% of the section is visible the callback will run and when 20% of the section is the section is out of the viewport the callback will run
+
+  rootMargin: `-${navHeight.height}px`, // it is a box of 90 pixels which will be applied outside our target element
+};
+const stickyNav = entries => {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, observerOptions);
+headerObserver.observe(headerSection);
