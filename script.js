@@ -4,6 +4,9 @@
 // Modal window
 
 const modal = document.querySelector('.modal');
+const nav = document.querySelector('.nav');
+const section1 = document.querySelector('#section--1');
+const headerSection = document.querySelector('.header');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
@@ -39,27 +42,27 @@ document.querySelectorAll('.section');
 
 document.getElementById('section--1');
 const allBtns = document.getElementsByTagName('button');
-console.log(allBtns);
+// console.log(allBtns);
 
 // Creating and inserting elements
-const msg = document.createElement('div');
-msg.classList.add('cookie-message');
+// const msg = document.createElement('div');
+// msg.classList.add('cookie-message');
 
 // sets the text
-msg.textContent = 'We use cookies to improve analytics';
+// msg.textContent = 'We use cookies to improve analytics';
 
 // inserts html in the element
-msg.innerHTML =
-  'We use cookies to improve analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// msg.innerHTML =
+// 'We use cookies to improve analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // So now, we have our element and we just have to insert it in our DOM
 const header = document.querySelector('.header');
 
 // adds the first child of the element
-header.prepend(msg);
+// header.prepend(msg);
 
 // add the last child of the element
-header.append(msg);
+// header.append(msg);
 
 // You can either append the element or prepend it. How to create multiple copies of the same element?
 // We have to create a clone of the element that we have to append or prepend multiple times using .cloneNode method
@@ -67,22 +70,22 @@ header.append(msg);
 // header.append(msg.cloneNode(true))
 
 // .before and .after method
-header.before(msg); // adds element before the header element
-header.after(msg); // adds element after the header element
+// header.before(msg); // adds element before the header element
+// header.after(msg); // adds element after the header element
 
 // removing element
-const cookieBtn = document.querySelector('.btn--close-cookie');
-cookieBtn.addEventListener('click', () => {
-  msg.remove();
-});
+// const cookieBtn = document.querySelector('.btn--close-cookie');
+// cookieBtn.addEventListener('click', () => {
+//   msg.remove();
+// });
 
 // getComputedStyles() gives us the styles of an element inside the dom
-console.log(getComputedStyle(msg).height);
-msg.style.height =
-  Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px';
+// console.log(getComputedStyle(msg).height);
+// msg.style.height =
+//   Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px';
 
-console.log(getComputedStyle(msg).height + 40 + 'px');
-console.log(Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px');
+// console.log(getComputedStyle(msg).height + 40 + 'px');
+// console.log(Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px');
 
 // CSS custom properties / CSS variables
 // when changing custom properties in CSS we have to use setProperty() method on the document element
@@ -90,35 +93,35 @@ console.log(Number.parseFloat(getComputedStyle(msg).height, 10) + 40 + 'px');
 
 // Setting html attributes in JS
 const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.className);
+// console.log(logo.alt);
+// console.log(logo.className);
 
 // non standard attribute
-console.log(logo.designer);
+// console.log(logo.designer);
 
 // there is another way of reading non standard attributes from the dom
 // getAttribute()
-console.log(logo.getAttribute('designer'));
+// console.log(logo.getAttribute('designer'));
 
 // we can set attribute as well using setAttribute method
-logo.setAttribute('company', 'Bankist');
+// logo.setAttribute('company', 'Bankist');
 
 // src attribute returns the absolute path as the value, to get the relative path we have to use getAttribute method
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
 
 // same is for links
-console.log(document.querySelector('.twitter-link').href);
-console.log(document.querySelector('.twitter-link').getAttribute('href'));
+// console.log(document.querySelector('.twitter-link').href);
+// console.log(document.querySelector('.twitter-link').getAttribute('href'));
 
 // nav link
-const modalBtn = document.querySelector('.btn--show-modal');
-console.log(modalBtn.href); // returns absolute path
-console.log(modalBtn.getAttribute('href')); // returns relative path
+// const modalBtn = document.querySelector('.btn--show-modal');
+// console.log(modalBtn.href); // returns absolute path
+// console.log(modalBtn.getAttribute('href')); // returns relative path
 
 // data attributes
 // these are special attributes that starts with the word data
-console.log(logo.dataset.versionNumber); // we use camel case where we have dash in the data attribute's name
+// console.log(logo.dataset.versionNumber); // we use camel case where we have dash in the data attribute's name
 
 // Classes
 // methods we have for classes in JS
@@ -192,7 +195,7 @@ const section = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', function (e) {
   // get the cordinates we want to scroll to
   const s1Cords = section.getBoundingClientRect();
-  console.log(s1Cords);
+  // console.log(s1Cords);
 
   /* getBoundingClientRect() gives us following:
 
@@ -241,7 +244,7 @@ btnScrollTo.addEventListener('click', function (e) {
 // An event basically is a signle generated by a DOM node. That signal means that something has happened ex: click
 
 // Mouse enter event
-const h1Ele = document.querySelector('h1');
+// const h1Ele = document.querySelector('h1');
 // const showAlert = (e) => {
 //   alert('reading heading')
 // }
@@ -262,16 +265,16 @@ const h1Ele = document.querySelector('h1');
 
 // Removing event listeners
 // We can also remove an event listener after we are finished with listening that event
-const showAlert = e => {
-  alert('reading heading');
-  //  h1Ele.removeEventListener('mouseenter', showAlert)
-};
-h1Ele.addEventListener('mouseenter', showAlert);
+// const showAlert = e => {
+//   alert('reading heading');
+//   //  h1Ele.removeEventListener('mouseenter', showAlert)
+// };
+// h1Ele.addEventListener('mouseenter', showAlert);
 
 // we can remove an event listener any where in our code, example: we can remove an event listener after a certain time has passed
-setTimeout(() => {
-  h1Ele.removeEventListener('mouseenter', showAlert);
-}, 3000);
+// setTimeout(() => {
+//   h1Ele.removeEventListener('mouseenter', showAlert);
+// }, 3000);
 
 /**
  * Event Bubbling & Propogation
@@ -400,39 +403,39 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 // Going downwards - selecting child elements
 // the first way of doing that is the query selector
-console.log(h1Ele.querySelectorAll('.highlight')); // will go as deep as necessary in the DOM tree to find all the element having the class of highlight if they are children of h1Ele
+// console.log(h1Ele.querySelectorAll('.highlight')); // will go as deep as necessary in the DOM tree to find all the element having the class of highlight if they are children of h1Ele
 
 // Selecting direct children using - childNodes & children
-console.log(h1Ele.childNodes); // gives every child node (text, comment, span, div)
-console.log(h1Ele.children); // gives children only
+// console.log(h1Ele.childNodes); // gives every child node (text, comment, span, div)
+// console.log(h1Ele.children); // gives children only
 
 // Selecting first and last children
-console.log(h1Ele.firstElementChild);
-console.log(h1Ele.lastElementChild);
+// console.log(h1Ele.firstElementChild);
+// console.log(h1Ele.lastElementChild);
 
 // Going upwards - selecting parents
 
 // direct parent
-console.log(h1Ele.parentNode);
-console.log(h1Ele.parentElement);
+// console.log(h1Ele.parentNode);
+// console.log(h1Ele.parentElement);
 
 // Sometimes we have to find a parent element not direct parent of the elemenet regardless how for it is in the DOM tree
 // .closest
-console.log(h1Ele.closest('.header'));
+// console.log(h1Ele.closest('.header'));
 
 // closest method is similar to querySelector but in opposite ways. querySelector finds children now matter how deep in the DOM tree but closest find parent element no matter how deep in the DOM tree
 
 // Going sideways - selecting siblings
 // we can only access direct siblings
-console.log(h1Ele.previousElementSibling);
-console.log(h1Ele.nextElementSibling);
+// console.log(h1Ele.previousElementSibling);
+// console.log(h1Ele.nextElementSibling);
 
-console.log(h1Ele.parentElement.children);
-[...h1Ele.parentElement.children].forEach(el => {
-  if (el !== h1Ele) {
-    el.style.transform = 'scale(0.5)';
-  }
-});
+// console.log(h1Ele.parentElement.children);
+// [...h1Ele.parentElement.children].forEach(el => {
+//   if (el !== h1Ele) {
+//     el.style.transform = 'scale(0.5)';
+//   }
+// });
 
 /**
  * Creating a tabbed components
@@ -481,3 +484,69 @@ tabsContainer.addEventListener('click', e => {
     activeDiv.classList.add('operations__content--active');
   }
 });
+
+// Menu fade animation using event delegation
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+// Passing "argument" into handler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+// --------------- Sticky Navigation ----------------
+// const initialCords = section1.getBoundingClientRect();
+// window.addEventListener('scroll', function () {
+//   if (this.window.scrollY > initialCords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// }); // this works but adding a class on window scroll will have a bad performance especially on mobile devices
+// we have an alternative for this that is "intersection observer API"
+
+// --------------- Intersection Observer API ----------------
+// It helps us to observe changes to a way that a certain target element intersects with another element or with the viewport
+const navHeight = nav.getBoundingClientRect();
+
+const observerOptions = {
+  root: null,
+  threshold: 0,
+  // 0 means that our observer callback will run when our section is completly out of view and also as soon as it enters the view
+  // 0.2 means when the 20% of the section is visible the callback will run and when 20% of the section is the section is out of the viewport the callback will run
+
+  rootMargin: `-${navHeight.height}px`, // it is a box of 90 pixels which will be applied outside our target element
+};
+const stickyNav = entries => {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, observerOptions);
+headerObserver.observe(headerSection);
+
+// Implementing revealing element on scroll
+const sections = document.querySelectorAll('.section');
+
+const revealOptions = {
+  root: null,
+  threshold: 0,
+};
+const revealSection = entries => {
+  // const [entry] = entries;
+  console.log(entries);
+};
+const sectionOsectionsbserver = new IntersectionObserver(
+  revealSection,
+  revealOptions
+);
+sections.forEach(revealSection);
