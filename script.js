@@ -533,3 +533,20 @@ const stickyNav = entries => {
 
 const headerObserver = new IntersectionObserver(stickyNav, observerOptions);
 headerObserver.observe(headerSection);
+
+// Implementing revealing element on scroll
+const sections = document.querySelectorAll('.section');
+
+const revealOptions = {
+  root: null,
+  threshold: 0,
+};
+const revealSection = entries => {
+  // const [entry] = entries;
+  console.log(entries);
+};
+const sectionOsectionsbserver = new IntersectionObserver(
+  revealSection,
+  revealOptions
+);
+sections.forEach(revealSection);
