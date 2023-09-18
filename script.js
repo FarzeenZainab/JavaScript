@@ -540,13 +540,17 @@ const sections = document.querySelectorAll('.section');
 const revealOptions = {
   root: null,
   threshold: 0,
+  rootMargin: `-${navHeight.height}px`,
 };
 const revealSection = entries => {
-  // const [entry] = entries;
-  console.log(entries);
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+  if (entry.isIntersecting) entry.target.classList.remove('section--hidden');
 };
-const sectionOsectionsbserver = new IntersectionObserver(
-  revealSection,
-  revealOptions
-);
-sections.forEach(revealSection);
+const sectionObserver = new IntersectionObserver(revealSection, revealOptions);
+
+sections.forEach(section => {
+  section.classList.add('section--hidden');
+  sectionObserver.observe(section);
+});
