@@ -572,7 +572,7 @@ const imgObserverCallback = (entries, observer) => {
   entry.target.src = entry.target.dataset.src;
 
   // wait for the placeholder image to loads first then remove the class
-  entry.addEventListener('load', () => {
+  entry.target.addEventListener('load', () => {
     entry.target.classList.remove('lazy-img');
   });
 
