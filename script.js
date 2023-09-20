@@ -554,3 +554,37 @@ sections.forEach(section => {
   section.classList.add('section--hidden');
   sectionObserver.observe(section);
 });
+
+// Lazy loading images
+const imageTargets = document.querySelectorAll('img[data-src]');
+
+const imgObserverOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight.height}px`,
+};
+
+const imgObserverCallback = (entries, observer) => {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  // Replace source with data the source
+  entry.target.src = entry.target.dataset.src;
+
+  // wait for the placeholder image to loads first then remove the class
+  entry.addEventListener('load', () => {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  // step the observer
+  imgTargetObserver.unobserve(entry.target);
+};
+
+const imgTargetObserver = new IntersectionObserver(
+  imgObserverCallback,
+  imgObserverOptions
+);
+
+imageTargets.forEach(image => {
+  imgTargetObserver.observe(image);
+});
