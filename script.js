@@ -540,13 +540,51 @@ const sections = document.querySelectorAll('.section');
 const revealOptions = {
   root: null,
   threshold: 0,
+  rootMargin: `-${navHeight.height}px`,
 };
 const revealSection = entries => {
-  // const [entry] = entries;
-  console.log(entries);
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+  if (entry.isIntersecting) entry.target.classList.remove('section--hidden');
 };
-const sectionOsectionsbserver = new IntersectionObserver(
-  revealSection,
-  revealOptions
+const sectionObserver = new IntersectionObserver(revealSection, revealOptions);
+
+sections.forEach(section => {
+  section.classList.add('section--hidden');
+  sectionObserver.observe(section);
+});
+
+// Lazy loading images
+const imageTargets = document.querySelectorAll('img[data-src]');
+
+const imgObserverOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight.height}px`,
+};
+
+const imgObserverCallback = (entries, observer) => {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+
+  // Replace source with data the source
+  entry.target.src = entry.target.dataset.src;
+
+  // wait for the placeholder image to loads first then remove the class
+  entry.target.addEventListener('load', () => {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  // step the observer
+  imgTargetObserver.unobserve(entry.target);
+};
+
+const imgTargetObserver = new IntersectionObserver(
+  imgObserverCallback,
+  imgObserverOptions
 );
-sections.forEach(revealSection);
+
+imageTargets.forEach(image => {
+  imgTargetObserver.observe(image);
+});
