@@ -3,7 +3,7 @@
 console.log('exporting Module');
 
 const shippingCost = 10;
-const cart = [];
+export const cart = [];
 
 // There are two types of exports in ES6 modules
 // Named exports and default exports

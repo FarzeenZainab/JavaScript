@@ -19,12 +19,19 @@ console.log(ShoppingCart.totalPrice, ShoppingCart.totalQuantity);
 // default import
 import add from './shoppingCart.js';
 add('bread', 5);
+add('oranges', 5);
+add('bananas', 5);
+
+// live connect to the cart
+import { cart } from './shoppingCart.js';
+
+console.log(cart);
 
 // importing named and default exports at once
-import addItem, {
-  addToCart as addNewItem,
-  totalPrice as price,
-} from './shoppingCart.js';
-addItem('oranges', 5);
-addNewItem('banana', 5);
-console.log(price);
+// import addItem, {
+//   addToCart as addNewItem,
+//   totalPrice as price,
+// } from './shoppingCart.js';
+// addItem('oranges', 5);
+// addNewItem('banana', 5);
+// console.log(price);
