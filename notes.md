@@ -52,3 +52,8 @@ console.log(count); // Outputs: 1
 
 The live connection means that the imorted `count` in `moduleB.js` is directly linked to the `count`
 in `moduleA.js`. Any changes made to `count` in `moduleA.js` (such as calling `increment()`) will be reflected in `moduleB.js` because the import is a reference to the original value, not a copy
+
+### TOP LEVEL AWAIT IN ES2022
+
+We can use await keyword outside async functions at the top level of our modules. This feature was introduced in
+ES2022. It only works in modules.

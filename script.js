@@ -1,5 +1,7 @@
 // importing module
-console.log('importing Module');
+console.log(
+  'importing Module ---- blocked code execution because shoppingCart.js has top level await'
+);
 
 // all importing statements are hoisted to the top
 import './shoppingCart.js';
@@ -35,3 +37,48 @@ console.log(cart);
 // addItem('oranges', 5);
 // addNewItem('banana', 5);
 // console.log(price);
+
+// Top level await
+
+// before top level await we have to do the fetching inside an async function
+// async function x () => {
+// await fetch call...
+// }
+
+// console.log('start fetching');
+
+// const getPosts = await fetch('https://jsonplaceholder.typicode.com/posts');
+// const posts = await getPosts.json();
+// console.log(posts);
+
+// This feature is easier to use and modern but it actually
+// blocks the execution of the entire block now, making it synchronous
+
+// We can verify it by slowing down the request by changing throttling to slow 3G
+
+// console.log('code block after request');
+
+const getLastPost = async () => {
+  const getPosts = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = await getPosts.json();
+  console.log(posts);
+
+  return { title: posts.at(-1).title, text: posts.at(-1).body };
+};
+
+const lastPost = getLastPost(); // if log this, it will not return us the value
+// Because it is an async function it will return a promise
+// To get hold to value return by the promise we have to use a promise
+console.log(lastPost);
+
+// get the value from the promise
+// Not very clean, so we can use top level await here
+// lastPost.then(last => console.log(last));
+
+const lastPost2 = await getLastPost();
+console.log(lastPost2);
+
+// IMPLICATION: If one module import a module that uses a top level await, then
+// the importing module will wait for the imported module to finish execution of the
+// blocking code
+// example is in shoppingCart file

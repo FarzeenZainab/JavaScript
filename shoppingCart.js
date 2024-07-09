@@ -2,6 +2,12 @@
 // always executed before the importing module
 console.log('exporting Module');
 
+// top level await example
+// blocking code
+console.log('start fetching users');
+await fetch('https://jsonplaceholder.typicode.com/users');
+console.log('Finish fetching user');
+
 const shippingCost = 10;
 export const cart = [];
 
