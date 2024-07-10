@@ -57,3 +57,5 @@ in `moduleA.js`. Any changes made to `count` in `moduleA.js` (such as calling `i
 
 We can use await keyword outside async functions at the top level of our modules. This feature was introduced in
 ES2022. It only works in modules.
+
+### THE MODULE PATTERN

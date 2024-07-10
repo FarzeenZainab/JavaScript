@@ -1,12 +1,12 @@
 // exporting module
 // always executed before the importing module
-console.log('exporting Module');
+// console.log('exporting Module');
 
 // top level await example
 // blocking code
-console.log('start fetching users');
-await fetch('https://jsonplaceholder.typicode.com/users');
-console.log('Finish fetching user');
+// console.log('start fetching users');
+// await fetch('https://jsonplaceholder.typicode.com/users');
+// console.log('Finish fetching user');
 
 const shippingCost = 10;
 export const cart = [];
@@ -32,5 +32,5 @@ export { totalPrice, totalQuantity };
 // We use default exports when we want to export 1 thing per module
 export default (product, quantity) => {
   cart.push(product);
-  console.log(`${quantity} ${product} added to the cart`);
+  // console.log(`${quantity} ${product} added to the cart`);
 };
