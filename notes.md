@@ -59,3 +59,52 @@ We can use await keyword outside async functions at the top level of our modules
 ES2022. It only works in modules.
 
 ### THE MODULE PATTERN
+
+Before ES6 modules were introduces, the module pattern in js was a design pattern used to emulate
+the concept of classes and private/public scope. It allows developers to create modules that encapsulates
+data and functions, providing a public interface while hiding the internal implementation details.
+
+Here's a basic outline of how the module pattern works:
+
+1. IIFE (Immediately invoked function expression)
+   The module pattern typically uses an IIFE to create a new scope. This ensures that variable and functions defined inside a module
+   are not accessible from the global scope
+
+2. Private variable and functions
+   Variable and functions defined inside the IIFE are private to the module. They can not be accessed directly from outside the module
+
+3. Public API
+   The module exposes a public API by returning an object containing methods and properties that should be accessible from the
+   outside of the module
+
+#### Example
+
+const shoppingCart2 = (function () {
+const cart = [];
+const shippingCost = 10;
+const totalPrice = 237;
+const totalQuantity = 23;
+
+const addToCart = (product, quantity) => {
+cart.push(product);
+console.log(
+`${quantity} ${product} added to the cart (shipping cost is ${shippingCost})` // closure
+);
+};
+
+const addStock = (product, quantity) => {
+cart.push(product);
+console.log(`${quantity} ${product} order from supplier`);
+};
+
+return {
+addToCart,
+cart,
+totalPrice,
+totalQuantity,
+};
+})();
+
+shoppingCart2.addToCart('apples', 4);
+shoppingCart2.addToCart('pizza', 4);
+console.log(shoppingCart2.shippingCost); // not accessible
