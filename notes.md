@@ -108,3 +108,12 @@ totalQuantity,
 shoppingCart2.addToCart('apples', 4);
 shoppingCart2.addToCart('pizza', 4);
 console.log(shoppingCart2.shippingCost); // not accessible
+
+### Working with command line
+
+1. cd (change directory)
+2. dir (list all folders in the current directory)
+3. new-item name (add new file)
+4. new-item name -item-type directory (add new folder)
+5. remove-item name (remove file / folder)
+6. mv filename location-to-move-the-file (move file into a directory)

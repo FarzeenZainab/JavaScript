@@ -113,3 +113,11 @@ const shoppingCart2 = (function () {
 shoppingCart2.addToCart('apples', 4);
 shoppingCart2.addToCart('pizza', 4);
 console.log(shoppingCart2.shippingCost); // not accessible
+
+const formatString = list => {};
+formatString([
+  [0, 'ab'],
+  [6, 'cd'],
+  [0, 'ef'],
+  [0, ''],
+]);
