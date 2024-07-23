@@ -121,3 +121,26 @@ formatString([
   [0, 'ef'],
   [0, ''],
 ]);
+
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+console.log(cloneDeep);
+
+const state = {
+  cart: [
+    { produce: 'bread', quantity: 5 },
+    { produce: 'pizza', quantity: 8 },
+  ],
+  user: {
+    loggedIn: true,
+  },
+};
+
+const stateClone = Object.assign({}, state); // clones the object but, it still is referencing to state
+
+console.log('Object.assign', stateClone);
+
+const stateDeepClone = cloneDeep(state);
+state.user.loggedIn = false;
+
+console.log('deep clone', stateDeepClone);

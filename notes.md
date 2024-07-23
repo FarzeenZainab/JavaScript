@@ -117,3 +117,14 @@ console.log(shoppingCart2.shippingCost); // not accessible
 4. new-item name -item-type directory (add new folder)
 5. remove-item name (remove file / folder)
 6. mv filename location-to-move-the-file (move file into a directory)
+
+### Introduction to NPM (Node package manager)
+
+It is both a software program and a package repository.
+
+- npm init (add npm to the project, creates a package.json file that contains all deps)
+
+#### Installing Lodash
+
+This library uses commonjs module system that will need a bundler to
+function properly. We will install lodash-es (ES Modules) package
