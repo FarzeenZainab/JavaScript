@@ -122,7 +122,8 @@ formatString([
   [0, ''],
 ]);
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 console.log(cloneDeep);
 
@@ -144,3 +145,12 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 
 console.log('deep clone', stateDeepClone);
+
+// start parcel bundle
+// npx parcel index.html
+
+// this will do hot module replacement will update the page
+// without reloading and maintaining our state
+if (module.hot) {
+  module.hot.accept();
+}

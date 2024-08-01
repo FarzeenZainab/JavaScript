@@ -123,8 +123,23 @@ console.log(shoppingCart2.shippingCost); // not accessible
 It is both a software program and a package repository.
 
 - npm init (add npm to the project, creates a package.json file that contains all deps)
+- npm i package-name
+- npm i package-name --save-dev (used to build our application not imported/used in our project)
 
 #### Installing Lodash
 
 This library uses commonjs module system that will need a bundler to
 function properly. We will install lodash-es (ES Modules) package
+
+### Bundling with Parcel and NPM scripts
+
+[What is bundler anyways](https://dev.to/sayanide/the-what-why-and-how-of-javascript-bundlers-4po9)
+
+// start parcel bundle
+// npx parcel index.html
+
+// this will do hot module replacement will update the page
+// without reloading and maintaining our state
+if (module.hot) {
+module.hot.accept();
+}
