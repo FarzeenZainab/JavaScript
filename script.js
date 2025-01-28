@@ -27,7 +27,7 @@ console.log(arr); // shows all methods linked to the array prototype object
 */
 
 // construction functions should be pascal cased
-// A constructor function can not be created using arrow function because it does not have this keyword and we need that
+// A constructor function can not be created using6 arrow function because it does not have this keyword and we need that
 // const Person = function (firstName, birthYear) {
 //   console.log(
 //     "the newly created empty object and it's type when we called the constructor function with the new keyword",
