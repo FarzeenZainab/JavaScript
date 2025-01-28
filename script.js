@@ -67,9 +67,9 @@ const Person = function (firstName, birthYear) {
   // You should never create a method inside a constructor function
   // This will be copied for each object that is created using this constructor, will be copied 1000 times for 1000 objects
   // To solve this we will use prototypes and prototypal inheritance to create instance methods
-  this.calcAge = function () {
-    console.log(2037 - this.birthYear);
-  };
+  //   this.calcAge = function () {
+  //     console.log(2037 - this.birthYear);
+  //   };
 };
 
 const farzeen = new Person('Farzeen', 1999);
@@ -88,3 +88,63 @@ console.log(
   'is farzeen {} is an instance of Person constructor',
   farzeen instanceof Person
 );
+
+// PROTOTYPES:
+
+/* 
+    Each and every function in JS automatically has a property called prototype, that includes constructor functions.
+*/
+
+const myFunc = function () {};
+
+console.log('myFunc prototype', myFunc.prototype);
+console.log('person prototype', Person.prototype);
+
+/* 
+    Every object that is created using a constructor function will get access 
+    to all the properties and methods that we define in the prototype property
+    of that construction function.
+*/
+
+/* 
+    Person constructor function has a prototype property.
+    On that property we define the calcAge function. 
+
+    Person.prototype (this is not the prototype/blueprint of Person but blueprint/prototype the objects created by this constructor function)
+    Person.prototype.calcAge
+*/
+Person.prototype.calcAge = function () {
+  console.log(2025 - this.birthYear);
+};
+
+console.log(Person.prototype);
+farzeen.calcAge();
+matilda.calcAge();
+
+/* 
+    PROTOTYPAL INHERITANCE AND PROTOTYPE CHAIN:
+
+    When a function is called by using new keyword following steps happens:
+    
+    const person1 = new Person('Jonas', 1999)
+
+    1. An empty object is create
+    2. this keyword in constructor function call is set to the new object 
+        (because of this we can directly set the new object property using this.name = name → from parameter)
+     
+    3. The new object is linked to (__proto__property) to the constructor function's prototype property
+
+    4. The new object is returned to the function
+*/
+
+/* 
+    What happens when we call calcAge function on the person1 object
+    
+    1. When we reach person1.calcAge function, the compiler tries to find the function
+        declaration in the person1 object but, it is not defined there
+        
+    2. Next, JS will look into its prototype, and if the method is available there it will call the method
+    
+    This terminology is called prototype chain. 
+
+*/
