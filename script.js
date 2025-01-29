@@ -148,3 +148,63 @@ matilda.calcAge();
     This terminology is called prototype chain. 
 
 */
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
+2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
+3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
+4. Create 2 car objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them.
+
+DATA CAR 1: 'BMW' going at 120 km/h
+DATA CAR 2: 'Mercedes' going at 95 km/h
+
+GOOD LUCK 😀
+*/
+
+// Car constructor
+const Car = function (name, make, speed) {
+  //assigning newly created object with below properties after object initialization
+  this.name = name;
+  this.make = make;
+  this.speed = speed;
+};
+
+const BMW = new Car('BMW', 2024, 120);
+const Mercedes = new Car('Mercedes', 2024, 120);
+
+console.log(BMW, Mercedes);
+
+// Creating constructor methods using prototype
+
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`accelerate ${this.name}, new speed is ${this.speed}`);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 10;
+  console.log(`decelerate ${this.name}, new speed is ${this.speed}`);
+};
+
+console.log('========= BMW =========');
+
+BMW.accelerate();
+BMW.accelerate();
+BMW.accelerate();
+BMW.brake();
+BMW.brake();
+BMW.brake();
+BMW.brake();
+
+console.log('========= Mercedes =========');
+
+BMW.accelerate();
+BMW.accelerate();
+BMW.accelerate();
+BMW.brake();
+BMW.brake();
+BMW.brake();
+BMW.brake();
