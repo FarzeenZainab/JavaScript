@@ -335,3 +335,81 @@ const acc1 = new Account('Farzeen Zainab', 1500, [100, 20, 80, 60]);
 console.log(acc1.balance);
 console.log(acc1.balance1);
 console.log(acc1.fullName);
+
+/* 
+  STATIC METHODS:
+  method defined on the class rather than on the instance class to keep the 
+  class level logic separate from instances are static methods. If a method 
+  depends on instance level logic (uses this keyword), then it should not be
+  static. 
+*/
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  static createWithBaseSetup() {
+    console.log('Hi, user');
+  }
+}
+const newUser = new User('Farzeen');
+User.createWithBaseSetup();
+// newUser.createWithBaseSetup();
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+1. Re-create challenge 1, but this time using an ES6 class;
+2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
+3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
+4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.
+
+DATA CAR 1: 'Ford' going at 120 km/h
+
+GOOD LUCK 😀
+*/
+
+class Car2 {
+  constructor(name, make, speed) {
+    this.name = name;
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
+  }
+
+  brake() {
+    this.speed -= 10;
+    console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
+  }
+
+  set speed(value) {
+    return (this._speed = value);
+  }
+
+  get speed() {
+    return this._speed;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(value) {
+    this.speed = value * 1.6;
+  }
+}
+
+const ford = new Car2('Ford', 2021, 120);
+
+console.log(`Speed: ${ford.speed}km/h`);
+console.log(`Speed in US:  ${ford.speedUS}mi/h`);
+ford.accelerate();
+ford.accelerate();
+console.log(`Speed: ${ford.speed}km/h`);
+console.log(`Speed in US:  ${ford.speedUS}mi/h`);
