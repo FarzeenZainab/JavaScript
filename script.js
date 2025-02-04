@@ -181,12 +181,12 @@ console.log(BMW, Mercedes);
 
 Car.prototype.accelerate = function () {
   this.speed += 10;
-  console.log(`accelerate ${this.name}, new speed is ${this.speed}`);
+  console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
 };
 
 Car.prototype.brake = function () {
   this.speed -= 10;
-  console.log(`decelerate ${this.name}, new speed is ${this.speed}`);
+  console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
 };
 
 console.log('========= BMW =========');
@@ -208,3 +208,130 @@ BMW.brake();
 BMW.brake();
 BMW.brake();
 BMW.brake();
+
+/* 
+  ES6 Classes:
+
+  What we did previously was an outdated method. Now, we are going to do the 
+  same thing but with ES6 classes which is the modern way of defining prototypes in JS.
+
+  JS Classes does not work like traditional way like it works in C# and other programming 
+  languages. In JS, classes are just the syntactic sugar on top of prototypal inheritance.
+
+  Classes still implement prototypal inheritance behind the scenes. 
+*/
+
+// Class expression:
+// const PersonCl = class {};
+
+// Class declaration:
+class PersonCl {
+  // this is called when the class is  initializes with the new keyword
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // These methods will be added to the class
+  greet() {
+    console.log(`Hi, ${firstName}`);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1999);
+
+console.log(jessica);
+
+/* 
+  WORKING WITH SETTERS AND GETTERS:
+
+  Every object in JS can have setter and getter properties. We call these properties
+  accessor properties. While, normal properties are called data properties. Getters and setters are 
+  functions that sets and gets a value.  
+
+*/
+
+const account = {
+  owner: 'Jonas',
+  movements: [120, -20, 40, 500],
+
+  /* 
+    To create a normal function to a getter function prepend it with
+    get keyword
+    */
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  /* 
+    We can create a setter using the set keyword
+  */
+  set latest(movement) {
+    this.movements.push(movement);
+  },
+};
+
+/*   
+  Because latest is now a getter function, we will treat the function as the 
+  property. We will not call the function using ()
+*/
+console.log(account.latest);
+
+/* 
+  Setting a property
+*/
+account.latest = 32;
+console.log(account.latest);
+
+/* 
+  We can use setters and getters in classes too, using same syntax
+*/
+class Account {
+  constructor(fullName, balance, movements) {
+    this.fullName = fullName;
+    this.balance = balance;
+    this.movements = movements;
+  }
+
+  // getter function
+  get balance1() {
+    return this.balance;
+  }
+
+  // setter function
+  /* 
+    We are creating a setter function of a property that 
+    already exits. When we pass that value when we create the instance object
+    the setter function is automatically called. So, whenever we set the fullName
+    to the this keyword, the setter function is called.  
+  */
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name`);
+
+    /* 
+     to avoid naming conflict we use _ convention, it is not a js feature.
+     When we did this, we lost the fullName property from the class because it is now _fullName
+     
+     To fix this we have to create a getter function
+    */
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+}
+
+const acc1 = new Account('Farzeen Zainab', 1500, [100, 20, 80, 60]);
+
+/* 
+  The difference between both consoles is that the first console is 
+  directly accessing a crucial/private property of an object. The second
+  is console is actually calling a method that return the value of the property 
+
+  We can modify the property by doing acc1.balance = 500 that is insecure.
+ */
+console.log(acc1.balance);
+console.log(acc1.balance1);
+console.log(acc1.fullName);
