@@ -413,3 +413,60 @@ ford.accelerate();
 ford.accelerate();
 console.log(`Speed: ${ford.speed}km/h`);
 console.log(`Speed in US:  ${ford.speedUS}mi/h`);
+
+/* 
+  INHERITANCE BETWEEN "CLASSES/PROTOTYPES"
+*/
+
+/* 
+  IMPLEMENTING INHERITANCE USING CONSTRUCTOR FUNCTIONS
+*/
+
+const PersonProto = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+PersonProto.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const StudentProto = function (firstName, birthYear, course) {
+  /*
+     We have to bind the this keyword with the person prototype because
+     we are calling the constructor function without the new keyword,
+     this makes it a normal function call. The this keyword is set to
+     undefined in normal function calls. We have to use the call method
+     to set the this keyword
+  */
+  PersonProto.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes
+/* 
+  We want the student prototype to inherit from the person prototype and also follow
+  the prototype chain correctly. 
+
+  We can not do this:
+  StudentProto.prototype = PersonProto.prototype
+
+  This will break the prototype chain and will override the prototype if student
+*/
+StudentProto.prototype = Object.create(PersonProto.prototype);
+
+StudentProto.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName}, I studies ${this.course}`);
+};
+
+const mike = new StudentProto('Mike', 2020, 'Computer Science');
+
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+/* Prototype chain */
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+console.log(mike.__proto__.__proto__.__proto__);
+console.log(mike.__proto__.__proto__.__proto__.__proto__);
