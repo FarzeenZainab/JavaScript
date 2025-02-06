@@ -470,3 +470,69 @@ console.log(mike.__proto__);
 console.log(mike.__proto__.__proto__);
 console.log(mike.__proto__.__proto__.__proto__);
 console.log(mike.__proto__.__proto__.__proto__.__proto__);
+
+/* 
+  Coding Challenge #3
+
+  1. Use a constructor function to implement an Electric Car (called EV) as a CHILD "class" of Car. Besides a make and current speed, the EV also has the current battery charge in % ('charge' property);
+
+  2. Implement a 'chargeBattery' method which takes an argument 'chargeTo' and sets the battery charge to 'chargeTo';
+
+  3. Implement an 'accelerate' method that will increase the car's speed by 20, and decrease the charge by 1%. Then log a message like this: 'Tesla going at 140 km/h, with a charge of 22%';
+
+  4. Create an electric car object and experiment with calling 'accelerate', 'brake' and 'chargeBattery' (charge to 90%). Notice what happens when you 'accelerate'! HINT: Review the definition of polymorphism 😉
+
+  DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
+
+  GOOD LUCK 😀
+
+
+*/
+
+const CarProto = function (name, make, speed) {
+  this.name = name;
+  this.make = make;
+  this.speed = speed;
+};
+
+CarProto.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
+};
+
+CarProto.prototype.brake = function () {
+  this.speed -= 10;
+  console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
+};
+
+const EV = function (name, make, speed, charge) {
+  CarProto.call(this, name, make, speed);
+  this.charge = charge;
+};
+
+// link EV prototype to Car Prototype to maintain the prototype chain and access/inherit the CarProto methods
+EV.prototype = Object.create(CarProto.prototype);
+
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge -= 1;
+
+//   console.log(
+//     `Tesla going at ${tesla.speed} km/h, with a charge of ${tesla.charge}%`
+//   );
+// };
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+const tesla = new EV('Tesla', 2024, 500, 45);
+tesla.chargeBattery(90);
+console.log(`Tesla charged to ${tesla.charge}%`);
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.accelerate();
+tesla.brake();
+tesla.brake();
+tesla.brake();
