@@ -12,8 +12,8 @@
 
     */
 
-const arr = [1, 2, 3, 4];
-console.log(arr); // shows all methods linked to the array prototype object
+// const arr = [1, 2, 3, 4];
+// console.log(arr); // shows all methods linked to the array prototype object
 
 /* 
     We can create prototypes using:
@@ -50,33 +50,33 @@ console.log(arr); // shows all methods linked to the array prototype object
 
 //  4. function automatically returns the newly created object
 
-const Person = function (firstName, birthYear) {
-  console.log(
-    "the newly created empty object and it's type when we called the constructor function with the new keyword",
-    this
-  );
+// const Person = function (firstName, birthYear) {
+//   console.log(
+//     "the newly created empty object and it's type when we called the constructor function with the new keyword",
+//     this
+//   );
 
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+//   // Instance properties
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
 
-  // this.firstName will create a new property inside the newly created object
+// this.firstName will create a new property inside the newly created object
 
-  // Instance methods
-  // This would work fine here but it is actually a bad practice
-  // You should never create a method inside a constructor function
-  // This will be copied for each object that is created using this constructor, will be copied 1000 times for 1000 objects
-  // To solve this we will use prototypes and prototypal inheritance to create instance methods
-  //   this.calcAge = function () {
-  //     console.log(2037 - this.birthYear);
-  //   };
-};
+// Instance methods
+// This would work fine here but it is actually a bad practice
+// You should never create a method inside a constructor function
+// This will be copied for each object that is created using this constructor, will be copied 1000 times for 1000 objects
+// To solve this we will use prototypes and prototypal inheritance to create instance methods
+//   this.calcAge = function () {
+//     console.log(2037 - this.birthYear);
+//   };
+// };
 
-const farzeen = new Person('Farzeen', 1999);
-const matilda = new Person('Matilda', 2000);
+// const farzeen = new Person('Farzeen', 1999);
+// const matilda = new Person('Matilda', 2000);
 
-console.table(farzeen);
-console.table(matilda);
+// console.table(farzeen);
+// console.table(matilda);
 
 // JS does not have classes like traditional OOP but it has constructor functions
 // that will act like a blueprint for objects
@@ -84,10 +84,10 @@ console.table(matilda);
 
 // There is an operator that we can use to test if an object is an instance of constructor
 
-console.log(
-  'is farzeen {} is an instance of Person constructor',
-  farzeen instanceof Person
-);
+// console.log(
+//   'is farzeen {} is an instance of Person constructor',
+//   farzeen instanceof Person
+// );
 
 // PROTOTYPES:
 
@@ -95,10 +95,10 @@ console.log(
     Each and every function in JS automatically has a property called prototype, that includes constructor functions.
 */
 
-const myFunc = function () {};
+// const myFunc = function () {};
 
-console.log('myFunc prototype', myFunc.prototype);
-console.log('person prototype', Person.prototype);
+// console.log('myFunc prototype', myFunc.prototype);
+// console.log('person prototype', Person.prototype);
 
 /* 
     Every object that is created using a constructor function will get access 
@@ -113,13 +113,13 @@ console.log('person prototype', Person.prototype);
     Person.prototype (this is not the prototype/blueprint of Person but blueprint/prototype the objects created by this constructor function)
     Person.prototype.calcAge
 */
-Person.prototype.calcAge = function () {
-  console.log(2025 - this.birthYear);
-};
+// Person.prototype.calcAge = function () {
+//   console.log(2025 - this.birthYear);
+// };
 
-console.log(Person.prototype);
-farzeen.calcAge();
-matilda.calcAge();
+// console.log(Person.prototype);
+// farzeen.calcAge();
+// matilda.calcAge();
 
 /* 
     PROTOTYPAL INHERITANCE AND PROTOTYPE CHAIN:
@@ -165,49 +165,49 @@ GOOD LUCK 😀
 */
 
 // Car constructor
-const Car = function (name, make, speed) {
-  //assigning newly created object with below properties after object initialization
-  this.name = name;
-  this.make = make;
-  this.speed = speed;
-};
+// const Car = function (name, make, speed) {
+//   //assigning newly created object with below properties after object initialization
+//   this.name = name;
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-const BMW = new Car('BMW', 2024, 120);
-const Mercedes = new Car('Mercedes', 2024, 120);
+// const BMW = new Car('BMW', 2024, 120);
+// const Mercedes = new Car('Mercedes', 2024, 120);
 
-console.log(BMW, Mercedes);
+// console.log(BMW, Mercedes);
 
-// Creating constructor methods using prototype
+// // Creating constructor methods using prototype
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
-};
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
+// };
 
-Car.prototype.brake = function () {
-  this.speed -= 10;
-  console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
-};
+// Car.prototype.brake = function () {
+//   this.speed -= 10;
+//   console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
+// };
 
-console.log('========= BMW =========');
+// console.log('========= BMW =========');
 
-BMW.accelerate();
-BMW.accelerate();
-BMW.accelerate();
-BMW.brake();
-BMW.brake();
-BMW.brake();
-BMW.brake();
+// BMW.accelerate();
+// BMW.accelerate();
+// BMW.accelerate();
+// BMW.brake();
+// BMW.brake();
+// BMW.brake();
+// BMW.brake();
 
-console.log('========= Mercedes =========');
+// console.log('========= Mercedes =========');
 
-BMW.accelerate();
-BMW.accelerate();
-BMW.accelerate();
-BMW.brake();
-BMW.brake();
-BMW.brake();
-BMW.brake();
+// BMW.accelerate();
+// BMW.accelerate();
+// BMW.accelerate();
+// BMW.brake();
+// BMW.brake();
+// BMW.brake();
+// BMW.brake();
 
 /* 
   ES6 Classes:
@@ -323,7 +323,7 @@ class Account {
   }
 }
 
-const acc1 = new Account('Farzeen Zainab', 1500, [100, 20, 80, 60]);
+// const acc1 = new Account('Farzeen Zainab', 1500, [100, 20, 80, 60]);
 
 /* 
   The difference between both consoles is that the first console is 
@@ -332,9 +332,9 @@ const acc1 = new Account('Farzeen Zainab', 1500, [100, 20, 80, 60]);
 
   We can modify the property by doing acc1.balance = 500 that is insecure.
  */
-console.log(acc1.balance);
-console.log(acc1.balance1);
-console.log(acc1.fullName);
+// console.log(acc1.balance);
+// console.log(acc1.balance1);
+// console.log(acc1.fullName);
 
 /* 
   STATIC METHODS:
@@ -344,17 +344,17 @@ console.log(acc1.fullName);
   static. 
 */
 
-class User {
-  constructor(name) {
-    this.name = name;
-  }
+// class User {
+//   constructor(name) {
+//     this.name = name;
+//   }
 
-  static createWithBaseSetup() {
-    console.log('Hi, user');
-  }
-}
-const newUser = new User('Farzeen');
-User.createWithBaseSetup();
+//   static createWithBaseSetup() {
+//     console.log('Hi, user');
+//   }
+// }
+// const newUser = new User('Farzeen');
+// User.createWithBaseSetup();
 // newUser.createWithBaseSetup();
 
 ///////////////////////////////////////
@@ -371,48 +371,48 @@ DATA CAR 1: 'Ford' going at 120 km/h
 GOOD LUCK 😀
 */
 
-class Car2 {
-  constructor(name, make, speed) {
-    this.name = name;
-    this.make = make;
-    this.speed = speed;
-  }
+// class Car2 {
+//   constructor(name, make, speed) {
+//     this.name = name;
+//     this.make = make;
+//     this.speed = speed;
+//   }
 
-  accelerate() {
-    this.speed += 10;
-    console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
-  }
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
+//   }
 
-  brake() {
-    this.speed -= 10;
-    console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
-  }
+//   brake() {
+//     this.speed -= 10;
+//     console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
+//   }
 
-  set speed(value) {
-    return (this._speed = value);
-  }
+//   set speed(value) {
+//     return (this._speed = value);
+//   }
 
-  get speed() {
-    return this._speed;
-  }
+//   get speed() {
+//     return this._speed;
+//   }
 
-  get speedUS() {
-    return this.speed / 1.6;
-  }
+//   get speedUS() {
+//     return this.speed / 1.6;
+//   }
 
-  set speedUS(value) {
-    this.speed = value * 1.6;
-  }
-}
+//   set speedUS(value) {
+//     this.speed = value * 1.6;
+//   }
+// }
 
-const ford = new Car2('Ford', 2021, 120);
+// const ford = new Car2('Ford', 2021, 120);
 
-console.log(`Speed: ${ford.speed}km/h`);
-console.log(`Speed in US:  ${ford.speedUS}mi/h`);
-ford.accelerate();
-ford.accelerate();
-console.log(`Speed: ${ford.speed}km/h`);
-console.log(`Speed in US:  ${ford.speedUS}mi/h`);
+// console.log(`Speed: ${ford.speed}km/h`);
+// console.log(`Speed in US:  ${ford.speedUS}mi/h`);
+// ford.accelerate();
+// ford.accelerate();
+// console.log(`Speed: ${ford.speed}km/h`);
+// console.log(`Speed in US:  ${ford.speedUS}mi/h`);
 
 /* 
   INHERITANCE BETWEEN "CLASSES/PROTOTYPES"
@@ -422,26 +422,26 @@ console.log(`Speed in US:  ${ford.speedUS}mi/h`);
   IMPLEMENTING INHERITANCE USING CONSTRUCTOR FUNCTIONS
 */
 
-const PersonProto = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+// const PersonProto = function (firstName, birthYear) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
 
-PersonProto.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
+// PersonProto.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
 
-const StudentProto = function (firstName, birthYear, course) {
-  /*
-     We have to bind the this keyword with the person prototype because
-     we are calling the constructor function without the new keyword,
-     this makes it a normal function call. The this keyword is set to
-     undefined in normal function calls. We have to use the call method
-     to set the this keyword
-  */
-  PersonProto.call(this, firstName, birthYear);
-  this.course = course;
-};
+// const StudentProto = function (firstName, birthYear, course) {
+//   /*
+//      We have to bind the this keyword with the person prototype because
+//      we are calling the constructor function without the new keyword,
+//      this makes it a normal function call. The this keyword is set to
+//      undefined in normal function calls. We have to use the call method
+//      to set the this keyword
+//   */
+//   PersonProto.call(this, firstName, birthYear);
+//   this.course = course;
+// };
 
 // Linking prototypes
 /* 
@@ -453,23 +453,23 @@ const StudentProto = function (firstName, birthYear, course) {
 
   This will break the prototype chain and will override the prototype if student
 */
-StudentProto.prototype = Object.create(PersonProto.prototype);
+// StudentProto.prototype = Object.create(PersonProto.prototype);
 
-StudentProto.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName}, I studies ${this.course}`);
-};
+// StudentProto.prototype.introduce = function () {
+//   console.log(`My name is ${this.firstName}, I studies ${this.course}`);
+// };
 
-const mike = new StudentProto('Mike', 2020, 'Computer Science');
+// const mike = new StudentProto('Mike', 2020, 'Computer Science');
 
-console.log(mike);
-mike.introduce();
-mike.calcAge();
+// console.log(mike);
+// mike.introduce();
+// mike.calcAge();
 
 /* Prototype chain */
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
-console.log(mike.__proto__.__proto__.__proto__);
-console.log(mike.__proto__.__proto__.__proto__.__proto__);
+// console.log(mike.__proto__);
+// console.log(mike.__proto__.__proto__);
+// console.log(mike.__proto__.__proto__.__proto__);
+// console.log(mike.__proto__.__proto__.__proto__.__proto__);
 
 /* 
   Coding Challenge #3
@@ -486,32 +486,31 @@ console.log(mike.__proto__.__proto__.__proto__.__proto__);
 
   GOOD LUCK 😀
 
-
 */
 
-const CarProto = function (name, make, speed) {
-  this.name = name;
-  this.make = make;
-  this.speed = speed;
-};
+// const CarProto = function (name, make, speed) {
+//   this.name = name;
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-CarProto.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
-};
+// CarProto.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`accelerate ${this.name}, new speed is ${this.speed} km/hr`);
+// };
 
-CarProto.prototype.brake = function () {
-  this.speed -= 10;
-  console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
-};
+// CarProto.prototype.brake = function () {
+//   this.speed -= 10;
+//   console.log(`decelerate ${this.name}, new speed is ${this.speed} km/hr`);
+// };
 
-const EV = function (name, make, speed, charge) {
-  CarProto.call(this, name, make, speed);
-  this.charge = charge;
-};
+// const EV = function (name, make, speed, charge) {
+//   CarProto.call(this, name, make, speed);
+//   this.charge = charge;
+// };
 
 // link EV prototype to Car Prototype to maintain the prototype chain and access/inherit the CarProto methods
-EV.prototype = Object.create(CarProto.prototype);
+// EV.prototype = Object.create(CarProto.prototype);
 
 // EV.prototype.accelerate = function () {
 //   this.speed += 20;
@@ -522,17 +521,130 @@ EV.prototype = Object.create(CarProto.prototype);
 //   );
 // };
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = chargeTo;
-};
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
 
-const tesla = new EV('Tesla', 2024, 500, 45);
-tesla.chargeBattery(90);
-console.log(`Tesla charged to ${tesla.charge}%`);
-tesla.accelerate();
-tesla.accelerate();
-tesla.accelerate();
-tesla.accelerate();
-tesla.brake();
-tesla.brake();
-tesla.brake();
+// const tesla = new EV('Tesla', 2024, 500, 45);
+// tesla.chargeBattery(90);
+// console.log(`Tesla charged to ${tesla.charge}%`);
+// tesla.accelerate();
+// tesla.accelerate();
+// tesla.accelerate();
+// tesla.accelerate();
+// tesla.brake();
+// tesla.brake();
+// tesla.brake();
+
+/* 
+  IMPLEMENTING INHERITANCE IN CLASSES
+*/
+
+class Person {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // instance methods
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey, ${this.fullName}`);
+  }
+
+  get name() {
+    return this._fullName;
+  }
+
+  set fullName(name) {
+    return (this._fullName = name);
+  }
+}
+
+/* 
+  To implement OOP, we have extends keyword, and super function
+*/
+class Student extends Person {
+  constructor(fullName, birthYear, course) {
+    /* super() is the constructor function of the parent class */
+    /* 
+      Always needs to happen first, because the super function is responsible for
+      creating the this keyword of this sub-class. Without the this keyword we are not able
+      to assign new properties in the sub-class
+    */
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log('Hi, ' + this.name);
+  }
+
+  /* POLYMORPHISM - parent and child classes have methods with same name but child function takes precedence in the chain */
+  calcAge() {
+    console.log('Calculating...');
+    console.log(2024 - this.birthYear);
+  }
+}
+
+const martha = new Student('Martha', 1990, 'Computer Science');
+console.log(martha);
+martha.introduce();
+martha.calcAge();
+
+/* 
+  CLASS Example 2:
+*/
+
+class AccountCl {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    // we can run any code inside this constructor function
+    console.log('Thank you for opening an account');
+  }
+
+  /* Public interface to our objects */
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  /* we abstracted the logic inside the function and we do not have to worry about the -ve sign when we call it */
+  withdrawal(val) {
+    this.deposit(-val);
+  }
+
+  approveLoan() {
+    console.log('approve loan called');
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+      console.log('loan approved of EUR: ' + val);
+    }
+  }
+}
+
+const acc1 = new AccountCl('Jonas', 'EUR', 1111);
+
+/* 
+  It is not recommended at all to interact with any property of an object like this.
+  We should always create methods for that
+*/
+// acc1.movements.push(120);
+// acc1.movements.push(-10);
+
+acc1.deposit(200);
+acc1.withdrawal(100);
+acc1.requestLoan(5000);
+acc1.approveLoan(); /* this should not be called at any cost from outside the class. */
+console.log(acc1);
